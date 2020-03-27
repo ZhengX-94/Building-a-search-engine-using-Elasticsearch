@@ -6,7 +6,7 @@ services:
       - frontend
     restart: always
     volumes:
-      - ./ES_WCD/DATA:/usr/share/elasticsearch/data
+      - ./ES_WCD_DATA:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock = true
