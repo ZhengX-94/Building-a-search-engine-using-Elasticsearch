@@ -43,25 +43,25 @@ def index():
             return render_template('index.html', res=response_dict_data)
 
 
-# @search_blueprint.route("/autocomplete",methods=['POST'],endpoint='autocomplete')
-# def autocomplete():
-#     if request.method == 'POST':
-#         search_term = request.form["input"]
-#         print("POST request called")
-#         print(search_term)
-#         payload ={
-#           "autocomplete" : {
-#             "text" : str(search_term),
-#             "completion" : {
-#               "field" : "title_suggest"
-#             }
-#           }
-#         }
-#         payload = json.dumps(payload)
-#         url="http://elasticsearch:9200/autocomplete/_suggest"
-#         response = requests.request("GET", url, data=payload, headers=headers)
-#         response_dict_data = json.loads(str(response.text))
-#         return json.dumps(response_dict_data)
+@search_blueprint.route("/autocomplete",methods=['POST'],endpoint='autocomplete')
+def autocomplete():
+    if request.method == 'POST':
+        search_term = request.form["input"]
+        print("POST request called")
+        print(search_term)
+        payload ={
+          "autocomplete" : {
+            "text" : str(search_term),
+            "completion" : {
+              "field" : "title_suggest"
+            }
+          }
+        }
+        payload = json.dumps(payload)
+        url="http://elasticsearch:9200/autocomplete/_suggest"
+        response = requests.request("GET", url, data=payload, headers=headers)
+        response_dict_data = json.loads(str(response.text))
+        return json.dumps(response_dict_data)
 
 
 

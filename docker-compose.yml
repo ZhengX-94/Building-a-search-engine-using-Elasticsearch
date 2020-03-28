@@ -6,7 +6,7 @@ services:
       - frontend
     restart: always
     volumes:
-      - ./ES_WCD_DATA:/usr/share/elasticsearch/data
+      - ./ES_DATA:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock = true
@@ -16,7 +16,7 @@ services:
       retries: 6
 
   hacker:
-    image: "dineshsonachalam/hacker:1.0.0"
+    image: "year1616/wcd-talent:1.0.0"
     networks:
       - frontend
     restart: always
